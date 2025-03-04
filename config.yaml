@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=./node_modules/envio/evm.schema.json
+name: nad.fun
+networks:
+- id: 10143
+  start_block: 0
+  contracts:
+  - name: IBondingCurveFactory
+    address:
+    - 0x60216FB3285595F4643f9f7cddAB842E799BD642
+    handler: src/EventHandlers.ts
+    events:
+    - event: Create(address indexed owner, address indexed curve, address indexed token, string tokenURI, string name, string symbol, uint256 virtualNative, uint256 virtualToken)
+    - event: SetCore(address indexed core)
+    - event: SetDexFactory(address indexed dexFactory)
+    - event: SetInitialize(uint256 deployFee, uint256 listingFee, uint256 tokenTotalSupply, uint256 virtualNative, uint256 virtualToken, uint256 k, uint256 targetToken, uint16 feeNumerator, uint8 feeDominator, address dexFactory)
+  - name: BondingCurve
+    handler: src/EventHandlers.ts
+    events:
+    - event: Buy(address indexed sender, address indexed token, uint256 amountIn, uint256 amountOut)
+    - event: Listing(address indexed curve, address indexed token, address indexed pair, uint256 listingWNativeAmount, uint256 listingTokenAmount, uint256 burnLiquidity)
+    - event: Lock(address indexed token)
+    - event: Sell(address indexed sender, address indexed token, uint256 amountIn, uint256 amountOut)
+    - event: Sync(address indexed token, uint256 reserveWNative, uint256 reserveToken, uint256 virtualWNative, uint256 virtualToken)
+  - name: UniswapV2Factory
+    address:
+    - 0x13eD0D5e1567684D964469cCbA8A977CDA580827
+    handler: src/EventHandlers.ts
+    events:
+    - event: PairCreated(address indexed token0, address indexed token1, address pair, uint256 )
+  
