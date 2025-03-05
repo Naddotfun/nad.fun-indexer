@@ -25,6 +25,14 @@ IBondingCurveFactory.Create.contractRegister(
   { preRegisterDynamicContracts: true }
 );
 
+UniswapV2Factory.PairCreated.contractRegister(
+  async ({ event, context }) => {
+    console.log("Uniswap Pair Added", event.params.pair);  
+    context.addUniswapV2Pair(event.params.pair);
+  },
+  { preRegisterDynamicContracts: true }
+);
+
 BondingCurve.Buy.handler(async ({ event, context }) => {
   const entity: BondingCurve_Buy = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
