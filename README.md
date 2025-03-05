@@ -19,3 +19,9 @@ To start the indexer, follow these steps:
 1. Navigate to the project directory:
    ```sh
    cd nad.fun-demo-envio-indexer
+2. Install dependencies
+   ```sh
+   pnpm install
+3. Start the indexer
+   ```sh
+   pnpm envio dev
