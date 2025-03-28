@@ -10,32 +10,32 @@ type IBondingCurveFactory_Create {
   virtualToken: BigInt!
 }
 
-type BondingCurve_Buy{
-  id:ID!
+type BondingCurve_Buy {
+  id: ID!
   sender: String!
   token: String!
   amountIn: BigInt!
   amountOut: BigInt!
 }
 
-type BondingCurve_Sell{
-  id:ID!
+type BondingCurve_Sell {
+  id: ID!
   sender: String!
   token: String!
   amountIn: BigInt!
   amountOut: BigInt!
 }
 
-type BondingCurve_Sync{
-  id:ID!
+type BondingCurve_Sync {
+  id: ID!
   token: String!
   reserveWNative: BigInt!
   reserveToken: BigInt!
   virtualWNative: BigInt!
 }
 
-type BondingCurve_Listing{
-  id:ID!
+type BondingCurve_Listing {
+  id: ID!
   curve: String!
   token: String!
   pair: String!
@@ -43,8 +43,8 @@ type BondingCurve_Listing{
   listingTokenAmount: BigInt!
   burnLiquidity: BigInt!
 }
-type BondingCurve_Lock{
-  id:ID!
+type BondingCurve_Lock {
+  id: ID!
   token: String!
 }
 
@@ -80,4 +80,9 @@ type UniswapV2Factory_PairCreated {
   _3: BigInt!
 }
 
-
+type UniswapV2Pair_Sync {
+  id: ID!
+  pair: String!
+  reserve0: BigInt!
+  reserve1: BigInt!
+}

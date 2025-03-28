@@ -1,4 +1,4 @@
-# Nad.fun Demo indexer
+# Nad.fun indexer
 
 Welcome to the Envio Blank Template! This repository serves as a starting point for setting up an Envio indexer.
 
@@ -19,9 +19,12 @@ To start the indexer, follow these steps:
 1. Navigate to the project directory:
    ```sh
    cd nad.fun-demo-envio-indexer
+   ```
 2. Install dependencies
    ```sh
    pnpm install
+   ```
 3. Start the indexer
    ```sh
    pnpm envio dev
+   ```

@@ -14,23 +14,24 @@ import {
   BondingCurve_Sell,
   BondingCurve_Listing,
   BondingCurve_Lock,
-  BondingCurve_Sync
+  BondingCurve_Sync,
+  UniswapV2Pair,
 } from "generated";
 
 IBondingCurveFactory.Create.contractRegister(
   async ({ event, context }) => {
-    console.log("Bonding Curve Added", event.params.curve);  
+    console.log("Bonding Curve Added", event.params.curve);
     context.addBondingCurve(event.params.curve);
   },
-  { preRegisterDynamicContracts: true }
+  { preRegisterDynamicContracts: true },
 );
 
 UniswapV2Factory.PairCreated.contractRegister(
   async ({ event, context }) => {
-    console.log("Uniswap Pair Added", event.params.pair);  
+    console.log("Uniswap Pair Added", event.params.pair);
     context.addUniswapV2Pair(event.params.pair);
   },
-  { preRegisterDynamicContracts: true }
+  { preRegisterDynamicContracts: true },
 );
 
 BondingCurve.Buy.handler(async ({ event, context }) => {
@@ -39,7 +40,7 @@ BondingCurve.Buy.handler(async ({ event, context }) => {
     sender: event.params.sender,
     token: event.params.token,
     amountIn: event.params.amountIn,
-    amountOut: event.params.amountOut
+    amountOut: event.params.amountOut,
   };
 
   context.BondingCurve_Buy.set(entity);
@@ -51,7 +52,7 @@ BondingCurve.Sell.handler(async ({ event, context }) => {
     sender: event.params.sender,
     token: event.params.token,
     amountIn: event.params.amountIn,
-    amountOut: event.params.amountOut
+    amountOut: event.params.amountOut,
   };
 
   context.BondingCurve_Sell.set(entity);
@@ -65,8 +66,7 @@ BondingCurve.Listing.handler(async ({ event, context }) => {
     pair: event.params.pair,
     listingWNativeAmount: event.params.listingWNativeAmount,
     listingTokenAmount: event.params.listingTokenAmount,
-    burnLiquidity: event.params.burnLiquidity
-
+    burnLiquidity: event.params.burnLiquidity,
   };
 
   context.BondingCurve_Listing.set(entity);
@@ -75,13 +75,11 @@ BondingCurve.Listing.handler(async ({ event, context }) => {
 BondingCurve.Lock.handler(async ({ event, context }) => {
   const entity: BondingCurve_Lock = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    token: event.params.token
-   
+    token: event.params.token,
   };
 
   context.BondingCurve_Lock.set(entity);
 });
-
 
 BondingCurve.Sync.handler(async ({ event, context }) => {
   const entity: BondingCurve_Sync = {
@@ -89,13 +87,11 @@ BondingCurve.Sync.handler(async ({ event, context }) => {
     token: event.params.token,
     reserveWNative: event.params.reserveWNative,
     reserveToken: event.params.reserveToken,
-    virtualWNative: event.params.virtualWNative
-
+    virtualWNative: event.params.virtualWNative,
   };
 
   context.BondingCurve_Sync.set(entity);
 });
-
 
 IBondingCurveFactory.Create.handler(async ({ event, context }) => {
   const entity: IBondingCurveFactory_Create = {
