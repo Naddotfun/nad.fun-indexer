@@ -1,3 +1,4 @@
+# Bonding Curve
 type IBondingCurveFactory_Create {
   id: ID!
   owner: String!
@@ -48,30 +49,7 @@ type BondingCurve_Lock {
   token: String!
 }
 
-type IBondingCurveFactory_SetCore {
-  id: ID!
-  core: String!
-}
-
-type IBondingCurveFactory_SetDexFactory {
-  id: ID!
-  dexFactory: String!
-}
-
-type IBondingCurveFactory_SetInitialize {
-  id: ID!
-  deployFee: BigInt!
-  listingFee: BigInt!
-  tokenTotalSupply: BigInt!
-  virtualNative: BigInt!
-  virtualToken: BigInt!
-  k: BigInt!
-  targetToken: BigInt!
-  feeNumerator: BigInt!
-  feeDominator: BigInt!
-  dexFactory: String!
-}
-
+# Uniswap V2
 type UniswapV2Factory_PairCreated {
   id: ID!
   token0: String!

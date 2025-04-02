@@ -4,9 +4,6 @@
 import {
   IBondingCurveFactory,
   IBondingCurveFactory_Create,
-  IBondingCurveFactory_SetCore,
-  IBondingCurveFactory_SetDexFactory,
-  IBondingCurveFactory_SetInitialize,
   UniswapV2Factory,
   UniswapV2Factory_PairCreated,
   BondingCurve,
@@ -16,6 +13,7 @@ import {
   BondingCurve_Lock,
   BondingCurve_Sync,
   UniswapV2Pair,
+  UniswapV2Pair_Sync,
 } from "generated";
 
 IBondingCurveFactory.Create.contractRegister(
@@ -109,42 +107,6 @@ IBondingCurveFactory.Create.handler(async ({ event, context }) => {
   context.IBondingCurveFactory_Create.set(entity);
 });
 
-IBondingCurveFactory.SetCore.handler(async ({ event, context }) => {
-  const entity: IBondingCurveFactory_SetCore = {
-    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    core: event.params.core,
-  };
-
-  context.IBondingCurveFactory_SetCore.set(entity);
-});
-
-IBondingCurveFactory.SetDexFactory.handler(async ({ event, context }) => {
-  const entity: IBondingCurveFactory_SetDexFactory = {
-    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    dexFactory: event.params.dexFactory,
-  };
-
-  context.IBondingCurveFactory_SetDexFactory.set(entity);
-});
-
-IBondingCurveFactory.SetInitialize.handler(async ({ event, context }) => {
-  const entity: IBondingCurveFactory_SetInitialize = {
-    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    deployFee: event.params.deployFee,
-    listingFee: event.params.listingFee,
-    tokenTotalSupply: event.params.tokenTotalSupply,
-    virtualNative: event.params.virtualNative,
-    virtualToken: event.params.virtualToken,
-    k: event.params.k,
-    targetToken: event.params.targetToken,
-    feeNumerator: event.params.feeNumerator,
-    feeDominator: event.params.feeDominator,
-    dexFactory: event.params.dexFactory,
-  };
-
-  context.IBondingCurveFactory_SetInitialize.set(entity);
-});
-
 UniswapV2Factory.PairCreated.handler(async ({ event, context }) => {
   const entity: UniswapV2Factory_PairCreated = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
@@ -155,4 +117,15 @@ UniswapV2Factory.PairCreated.handler(async ({ event, context }) => {
   };
 
   context.UniswapV2Factory_PairCreated.set(entity);
+});
+
+UniswapV2Pair.Sync.handler(async ({ event, context }) => {
+  const entity: UniswapV2Pair_Sync = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    pair: event.srcAddress,
+    reserve0: event.params.reserve0,
+    reserve1: event.params.reserve1,
+  };
+
+  context.UniswapV2Pair_Sync.set(entity);
 });
