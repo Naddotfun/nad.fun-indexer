@@ -10,9 +10,6 @@ networks:
         handler: src/EventHandlers.ts
         events:
           - event: Create(address indexed owner, address indexed curve, address indexed token, string tokenURI, string name, string symbol, uint256 virtualNative, uint256 virtualToken)
-          - event: SetCore(address indexed core)
-          - event: SetDexFactory(address indexed dexFactory)
-          - event: SetInitialize(uint256 deployFee, uint256 listingFee, uint256 tokenTotalSupply, uint256 virtualNative, uint256 virtualToken, uint256 k, uint256 targetToken, uint16 feeNumerator, uint8 feeDominator, address dexFactory)
       - name: BondingCurve
         handler: src/EventHandlers.ts
         events:
@@ -30,9 +27,4 @@ networks:
       - name: UniswapV2Pair
         handler: src/EventHandlers.ts
         events:
-          - event: Approval(address indexed owner, address indexed spender, uint256 value)
-          - event: Burn(address indexed sender, uint256 amount0, uint256 amount1, address indexed to)
-          - event: Mint(address indexed sender, uint256 amount0, uint256 amount1)
-          - event: Swap(address indexed sender, uint256 amount0In, uint256 amount1In, uint256 amount0Out, uint256 amount1Out, address indexed to)
           - event: Sync(uint112 reserve0, uint112 reserve1)
-          - event: Transfer(address indexed from, address indexed to, uint256 value)
