@@ -1,4 +1,4 @@
-# Nad.fun indexer
+# Nad.fun Alpha version indexer
 
 Welcome to the Envio Blank Template! This repository serves as a starting point for setting up an Envio indexer.
 
