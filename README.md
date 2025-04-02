@@ -1,6 +1,6 @@
 # Nad.fun Alpha version indexer
 
-Welcome to the Envio Blank Template! This repository serves as a starting point for setting up an Envio indexer.
+Nad.fun Indexer for optimize trading ux
 
 For a comprehensive guide on Envio indexer features, please refer to the [Envio Documentation](https://docs.envio.dev).
 
