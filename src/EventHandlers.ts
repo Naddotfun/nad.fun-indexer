@@ -32,29 +32,29 @@ UniswapV2Factory.PairCreated.contractRegister(
   { preRegisterDynamicContracts: true },
 );
 
-BondingCurve.Buy.handler(async ({ event, context }) => {
-  const entity: BondingCurve_Buy = {
-    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    sender: event.params.sender,
-    token: event.params.token,
-    amountIn: event.params.amountIn,
-    amountOut: event.params.amountOut,
-  };
+// BondingCurve.Buy.handler(async ({ event, context }) => {
+//   const entity: BondingCurve_Buy = {
+//     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+//     sender: event.params.sender,
+//     token: event.params.token,
+//     amountIn: event.params.amountIn,
+//     amountOut: event.params.amountOut,
+//   };
 
-  context.BondingCurve_Buy.set(entity);
-});
+//   context.BondingCurve_Buy.set(entity);
+// });
 
-BondingCurve.Sell.handler(async ({ event, context }) => {
-  const entity: BondingCurve_Sell = {
-    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    sender: event.params.sender,
-    token: event.params.token,
-    amountIn: event.params.amountIn,
-    amountOut: event.params.amountOut,
-  };
+// BondingCurve.Sell.handler(async ({ event, context }) => {
+//   const entity: BondingCurve_Sell = {
+//     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+//     sender: event.params.sender,
+//     token: event.params.token,
+//     amountIn: event.params.amountIn,
+//     amountOut: event.params.amountOut,
+//   };
 
-  context.BondingCurve_Sell.set(entity);
-});
+//   context.BondingCurve_Sell.set(entity);
+// });
 
 BondingCurve.Listing.handler(async ({ event, context }) => {
   const entity: BondingCurve_Listing = {
