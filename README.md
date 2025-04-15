@@ -1,5 +1,7 @@
 # Nad.fun Alpha version indexer
 
+version v0.1.0
+
 Nad.fun Indexer for optimize trading ux
 
 For a comprehensive guide on Envio indexer features, please refer to the [Envio Documentation](https://docs.envio.dev).
