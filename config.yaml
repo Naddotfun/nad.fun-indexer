@@ -31,4 +31,5 @@ networks:
           - event: Swap(address indexed sender, uint256 amount0In, uint256 amount1In, uint256 amount0Out, uint256 amount1Out, address indexed to)
             field_selection:
               transaction_fields:
+                - "from"
                 - "hash"

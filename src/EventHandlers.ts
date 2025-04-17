@@ -134,11 +134,12 @@ UniswapV2Pair.Sync.handler(async ({ event, context }) => {
 UniswapV2Pair.Swap.handler(async ({ event, context }) => {
 
   const txHash = event.transaction.hash;
+  const realSender = event.transaction.from as string;
 
   const entity: UniswapV2Pair_Swap = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
     pair: event.srcAddress,
-    sender: event.params.sender,
+    sender: realSender,
     amount0In: event.params.amount0In,
     amount1In: event.params.amount1In,
     amount0Out: event.params.amount0Out,
