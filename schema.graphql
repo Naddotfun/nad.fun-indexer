@@ -74,5 +74,6 @@ type UniswapV2Pair_Swap {
   amount0Out: BigInt!
   amount1Out: BigInt!
   to: String!
+  txHash: String!
 }
   
