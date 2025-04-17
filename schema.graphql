@@ -64,3 +64,15 @@ type UniswapV2Pair_Sync {
   reserve0: BigInt!
   reserve1: BigInt!
 }
+
+type UniswapV2Pair_Swap {
+  id: ID!
+  pair: String!
+  sender: String!
+  amount0In: BigInt!
+  amount1In: BigInt!
+  amount0Out: BigInt!
+  amount1Out: BigInt!
+  to: String!
+}
+  

@@ -14,6 +14,7 @@ import {
   BondingCurve_Sync,
   UniswapV2Pair,
   UniswapV2Pair_Sync,
+  UniswapV2Pair_Swap,
 } from "generated";
 
 IBondingCurveFactory.Create.contractRegister(
@@ -32,29 +33,29 @@ UniswapV2Factory.PairCreated.contractRegister(
   { preRegisterDynamicContracts: true },
 );
 
-// BondingCurve.Buy.handler(async ({ event, context }) => {
-//   const entity: BondingCurve_Buy = {
-//     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-//     sender: event.params.sender,
-//     token: event.params.token,
-//     amountIn: event.params.amountIn,
-//     amountOut: event.params.amountOut,
-//   };
+BondingCurve.Buy.handler(async ({ event, context }) => {
+  const entity: BondingCurve_Buy = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    sender: event.params.sender,
+    token: event.params.token,
+    amountIn: event.params.amountIn,
+    amountOut: event.params.amountOut,
+  };
 
-//   context.BondingCurve_Buy.set(entity);
-// });
+  context.BondingCurve_Buy.set(entity);
+});
 
-// BondingCurve.Sell.handler(async ({ event, context }) => {
-//   const entity: BondingCurve_Sell = {
-//     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-//     sender: event.params.sender,
-//     token: event.params.token,
-//     amountIn: event.params.amountIn,
-//     amountOut: event.params.amountOut,
-//   };
+BondingCurve.Sell.handler(async ({ event, context }) => {
+  const entity: BondingCurve_Sell = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    sender: event.params.sender,
+    token: event.params.token,
+    amountIn: event.params.amountIn,
+    amountOut: event.params.amountOut,
+  };
 
-//   context.BondingCurve_Sell.set(entity);
-// });
+  context.BondingCurve_Sell.set(entity);
+});
 
 BondingCurve.Listing.handler(async ({ event, context }) => {
   const entity: BondingCurve_Listing = {
@@ -129,3 +130,19 @@ UniswapV2Pair.Sync.handler(async ({ event, context }) => {
 
   context.UniswapV2Pair_Sync.set(entity);
 });
+
+UniswapV2Pair.Swap.handler(async ({ event, context }) => {
+  const entity: UniswapV2Pair_Swap = {
+    id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
+    pair: event.srcAddress,
+    sender: event.params.sender,
+    amount0In: event.params.amount0In,
+    amount1In: event.params.amount1In,
+    amount0Out: event.params.amount0Out,
+    amount1Out: event.params.amount1Out,
+    to: event.params.to,
+  };
+
+  context.UniswapV2Pair_Swap.set(entity);
+});
+

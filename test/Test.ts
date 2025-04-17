@@ -115,3 +115,40 @@ describe("Dynamic Contracts registration tests", () => {
     });
   });
 });
+
+describe("UniswapV2Pair contract Swap event tests", () => {
+  // Create mock db
+  const mockDb = MockDb.createMockDb();
+
+  describe("Swap event", () => {
+    // Creating mock for UniswapV2Pair contract Swap event
+    const event = TestHelpers.UniswapV2Pair.Swap.createMockEvent({
+      sender: "0x123",
+      amount0In: BigInt(1000),
+      amount1In: BigInt(2000),
+      amount0Out: BigInt(3000),
+      amount1Out: BigInt(4000),
+      to: "0x456",
+    });
+
+    it("UniswapV2Pair contract Swap event is processed correctly", async () => {
+      // Processing the event
+      const mockDbUpdated =
+        await TestHelpers.UniswapV2Pair.Swap.processEvent({
+          event,
+          mockDb,
+        });
+
+      // Check if the event is processed correctly
+      const registeredEvents =
+        mockDbUpdated.entities.UniswapV2Pair_Swap;
+
+      assert(
+        registeredEvents
+          .getAll()
+          .some((event) => event.sender === event.sender),
+        "Swap event should be processed correctly",
+      );
+    });
+  });
+});

@@ -13,6 +13,8 @@ networks:
       - name: BondingCurve
         handler: src/EventHandlers.ts
         events:
+          - event: Buy(address indexed sender, address indexed token, uint256 amountIn, uint256 amountOut)
+          - event: Sell(address indexed sender, address indexed token, uint256 amountIn, uint256 amountOut)
           - event: Listing(address indexed curve, address indexed token, address indexed pair, uint256 listingWNativeAmount, uint256 listingTokenAmount, uint256 burnLiquidity)
           - event: Lock(address indexed token)
           - event: Sync(address indexed token, uint256 reserveWNative, uint256 reserveToken, uint256 virtualWNative, uint256 virtualToken)
@@ -26,3 +28,4 @@ networks:
         handler: src/EventHandlers.ts
         events:
           - event: Sync(uint112 reserve0, uint112 reserve1)
+          - event: Swap(address sender, uint256 amount0In, uint256 amount1In, uint256 amount0Out, uint256 amount1Out, address to)
