@@ -28,4 +28,4 @@ networks:
         handler: src/EventHandlers.ts
         events:
           - event: Sync(uint112 reserve0, uint112 reserve1)
-          - event: Swap(address sender, uint256 amount0In, uint256 amount1In, uint256 amount0Out, uint256 amount1Out, address to)
+          - event: Swap(address indexed sender, uint256 amount0In, uint256 amount1In, uint256 amount0Out, uint256 amount1Out, address indexed to)
