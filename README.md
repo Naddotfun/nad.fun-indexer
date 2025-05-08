@@ -1,6 +1,6 @@
 # Nad.fun Alpha version indexer
 
-version v0.1.0v
+version v0.1.1
 
 deploy testing
 
